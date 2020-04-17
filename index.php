@@ -1,56 +1,41 @@
 <?php
+require_once('./vendor/autoload.php');
+
+//Namespace
+use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use \LINE\LINEBot;
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+
+$channel_token = 'yTdPdV7qXOJyl5duTlmuSGmSMy/MNqtzLmyewQXR4CbZW31lv3vKaVI+Labr7YbagSg11D5yGSxHSSp0ABVbVSEnfDYshKZ1Zw8ZWqsROchC24rZrizoMHLZx8cYvUYHudCZI74Dne4LoiIJzRNkwQdB04t89/1O/w1cDnyilFU=';
+$channel_secret = '13cae15b2142e66b213a661e30004dbc';
+
+//Get message from Line API
+$content = file_get_contents('php://input');
+$events = json_decode($content,true);
 
 
-$API_URL = 'https://api.line.me/v2/bot/message';
-$ACCESS_TOKEN = 'yTdPdV7qXOJyl5duTlmuSGmSMy/MNqtzLmyewQXR4CbZW31lv3vKaVI+Labr7YbagSg11D5yGSxHSSp0ABVbVSEnfDYshKZ1Zw8ZWqsROchC24rZrizoMHLZx8cYvUYHudCZI74Dne4LoiIJzRNkwQdB04t89/1O/w1cDnyilFU='; 
-$channelSecret = '13cae15b2142e66b213a661e30004dbc';
+if(!is_null($events['events'])){
 
+	foreach($events['events'] as $events){
+		if($event['type'] == 'message'){
+			switch ($event['message']['type']) {
+				case 'text':
+					// Get replyToken
+					$replyToken = $event['replyToken'];
 
-$POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
+					// Reply message
+					$respMessage = 'Hello, your message is '.$event['message']['text'];
 
-$request = file_get_contents('php://input');   // Get request content
-$request_array = json_decode($request, true);   // Decode JSON to Array
-
-
-
-if ( sizeof($request_array['events']) > 0 ) {
-
-    foreach ($request_array['events'] as $event) {
-
-        $reply_message = '';
-        $reply_token = $event['replyToken'];
-
-        $text = $event['message']['text'];
-        $data = [
-            'replyToken' => $reply_token,
-            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-            'messages' => [['type' => 'text', 'text' => $text ]]
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-
-        echo "Result: ".$send_result."\r\n";
-    }
+					$httpClinet = new CurlHTTPClient($channel_token);
+					$bot = new LINEBot($httpClinet,array('channelSecret' => $channel_secret));
+					$TextMessageBuilder = new TextMessageBuilder($respMessage);
+					$response = $bot->replyMessage($replyToken,$TextMessageBuilder);
+					break;
+			}
+		}
+	}
 }
 
-echo "OK";
-
-
-
-
-function send_reply_message($url, $post_header, $post_body)
-{
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_body);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    $result = curl_exec($ch);
-    curl_close($ch);
-
-    return $result;
-}
-
+echo "OK BOT";
+error_log(message);
 ?>
