@@ -21,7 +21,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $texts = $event['message']['text'];
 
-        $text = 'Hello, your message is '.$event['message']['text'];
+        $text = 'นี่เป็น BOT สำหรับส่งและแจ้งเตือนจดหมาย';
 
         if($texts == 'จดหมาย'){
         	$text = 'คุณต้องการดูจดหมายใช่ไหมครับ';
