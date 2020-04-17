@@ -7,7 +7,7 @@ use \LINE\LINEBot;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 $channel_token = 'qL18gTbZZKqZXBpOOeKHayzoepYsM/t/RY1RxCeBdiW4YCu53VmjLJuwot+2C1bSgSg11D5yGSxHSSp0ABVbVSEnfDYshKZ1Zw8ZWqsROcgNQrwVqVUUCHf+4ciCjK7FPS+hg0ZOu5fBafdYWSwZQgdB04t89/1O/w1cDnyilFU=';
-$channel_secret = 'fa16fcc14750b92dfde3be2c21a942dc';
+$channel_secret = '13cae15b2142e66b213a661e30004dbc';
 
 //Get message from Line API
 $content = file_get_contents('php://input');
