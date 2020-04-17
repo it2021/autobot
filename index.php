@@ -37,4 +37,5 @@ if(!is_null($events['events'])){
 }
 
 echo "OK BOT";
+error_log(message);
 ?>
