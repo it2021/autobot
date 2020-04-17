@@ -69,6 +69,6 @@
 		    }
 		}
 
-		return $datasReturn;
+		echo $datasReturn;
 	}
 ?>
