@@ -27,7 +27,7 @@ if (!isset($request_array['events'])) {
 
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
-        //echo "Result: ".$send_result."\r\n";
+        echo "Result: ".$send_result."\r\n";
     }
 }
 
