@@ -12,7 +12,7 @@ $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
 
 
-if (!isset($request_array['events'])) {
+if ( sizeof($request_array['events']) > 0 ) {
 
     foreach ($request_array['events'] as $event) {
 
