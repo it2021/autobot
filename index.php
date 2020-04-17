@@ -9,54 +9,27 @@ $channelSecret = '13cae15b2142e66b213a661e30004dbc';
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
 $request = file_get_contents('php://input');   // Get request content
-$events = json_decode($request, true);   // Decode JSON to Array
+$request_array = json_decode($request, true);   // Decode JSON to Array
 
 
-if(!is_null($events['events'])){
-
-	foreach($events['events'] as $events){
-		if($event['type'] == 'message'){
-			switch ($event['message']['type']) {
-				case 'text':
-					// Get replyToken
-					$replyToken = $event['replyToken'];
-
-		// Reply message
-		$text = 'Hello, your message is '.$event['message']['text'];
-
-
-	    $data = ['replyToken' => $replytoken,'messages' => [['type' => 'text', 'text' => $text ]]];
-
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
-        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-
-				break;
-			}
-		}
-	}
-}
-
-
-/*if ( sizeof($request_array['events']) > 0 ) {
+if (!isset($request_array['events'])) {
 
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
         $reply_token = $event['replyToken'];
 
-        $text = $event['message']['text'];
-        $data = [
-            'replyToken' => $reply_token,
-            'messages' => [['type' => 'text', 'text' => $text ]]
-        ];
+        $text = 'Hello, your message is '.$event['message']['text'];
+
+        $data = ['replyToken' => $reply_token,'messages' => [['type' => 'text', 'text' => $text ]]];
+
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
-        echo "Result: ".$send_result."\r\n";
+        //echo "Result: ".$send_result."\r\n";
     }
-} */
+}
 
 
 
