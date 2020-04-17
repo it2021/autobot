@@ -19,7 +19,15 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_message = '';
         $reply_token = $event['replyToken'];
 
+        $texts = $event['message']['text'];
+
         $text = 'Hello, your message is '.$event['message']['text'];
+
+        if($texts == 'จดหมาย'){
+        	$text = 'คุณต้องการดูจดหมายใช่ไหมครับ';
+        }
+
+        
 
         $data = ['replyToken' => $reply_token,'messages' => [['type' => 'text', 'text' => $text ]]];
 
