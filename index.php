@@ -44,7 +44,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 	$string = explode(':',$description);
 	$str1 = $string[1];
 	$str_2 = explode(' ', $str1);   
-        	$text = $str_2[1];
+        	$text = 'อุณหภูมิ : '.$str_2[1].' C';
         }
 
         
