@@ -1,10 +1,7 @@
 <?php
-
-
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'yTdPdV7qXOJyl5duTlmuSGmSMy/MNqtzLmyewQXR4CbZW31lv3vKaVI+Labr7YbagSg11D5yGSxHSSp0ABVbVSEnfDYshKZ1Zw8ZWqsROchC24rZrizoMHLZx8cYvUYHudCZI74Dne4LoiIJzRNkwQdB04t89/1O/w1cDnyilFU='; 
 $channelSecret = '13cae15b2142e66b213a661e30004dbc';
-
 
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
@@ -44,7 +41,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 	$string = explode(':',$description);
 	$str1 = $string[1];
 	$str_2 = explode(' ', $str1);   
-        	$text = 'อุณหภูมิ : '.$str_2[1].' C';
+            $text = 'อุณหภูมิ : '.$str_2[1].' C';
         }
 
         
@@ -58,10 +55,6 @@ if ( sizeof($request_array['events']) > 0 ) {
         echo "Result: ".$send_result."\r\n";
     }
 }
-
-
-
-echo "OK ผ่านครับผม 01 ^^";
 
 
 
