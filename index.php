@@ -32,7 +32,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         if($texts == 'วันนี้'){
             $text = 'วันนี้อากาศดีนะ';   
         }
-        if($texts == 'อากาศวันนี้'){
+        if($texts == 'อกว'){
     	$file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
 	$rss = simplexml_load_file($file);
 	$title = $rss->channel->item->title;
