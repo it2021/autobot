@@ -32,6 +32,20 @@ if ( sizeof($request_array['events']) > 0 ) {
         if($texts == 'วันนี้'){
             $text = 'วันนี้อากาศดีนะ';   
         }
+        if($texts == 'อากาศวันนี้'){
+    $file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
+	$rss = simplexml_load_file($file);
+	$title = $rss->channel->item->title;
+	$link = $rss->channel->item->link;
+	$cdescription = $rss->channel->item->description;
+	$description = strip_tags($cdescription,"<br>");
+	
+	$string = explode('<br/>',$description);
+	$string = explode(':',$description);
+	$str1 = $string[1];
+	$str_2 = explode(' ', $str1);   
+            echo "<b> อุณหภูมิ $str_2[1] C </b>";
+        }
 
         
 
