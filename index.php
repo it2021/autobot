@@ -11,8 +11,15 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 $time_now = date('H:i');
 $time = date('i');
 
-if($time == '56'){
+if($time == '58'){
    $text = 'Alert Time'.$time;	
+	$data = ['replyToken' => $reply_token,'messages' => [['type' => 'text', 'text' => $text ]]];
+
+        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+        $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+
+        echo "Result: ".$send_result."\r\n";
 }
 
 if ( sizeof($request_array['events']) > 0 ) {
