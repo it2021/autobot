@@ -7,6 +7,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
+$date_time_now = date('Y-m-d H:i');
 
 
 if ( sizeof($request_array['events']) > 0 ) {
@@ -29,6 +30,9 @@ if ( sizeof($request_array['events']) > 0 ) {
         if($texts == 'วันนี้'){
             $text = 'วันนี้อากาศดีนะ';   
         }
+	if($texts == 'เวลา'){
+	    $text = $date_time_now;		
+	}
         if($texts == 'อกว'){
     	$file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
 	$rss = simplexml_load_file($file);
