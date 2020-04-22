@@ -11,7 +11,7 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 $time_now = date('H:i');
 $time = date('i');
 
-if($time == '01'){
+if($time > '01'){
    $text = 'Alert Time'.$time;	
 	$data = ['replyToken' => $reply_token,'messages' => [['type' => 'text', 'text' => $text ]]];
 
