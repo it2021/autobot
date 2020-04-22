@@ -11,6 +11,9 @@ $request_array = json_decode($request, true);   // Decode JSON to Array
 $time_now = date('H:i');
 $time = date('i');
 
+if($time == '56'){
+   $text = 'Alert Time'.$time;	
+}
 
 if ( sizeof($request_array['events']) > 0 ) {
 
@@ -23,9 +26,6 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $text = 'ผมไม่เข้าใจความหมาย?';
 
-	if($time == '54'){
-		$text = 'Alert Time'.$time;	
-	}
         if($texts == 'จดหมาย'){
         	$text = 'คุณต้องการดูจดหมายใช่ไหมครับ';
         }
@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             $text = 'วันนี้อากาศดีนะ';   
         }
 	if($texts == 'เวลา'){
-	    $text = 'เวลาในปัจจุบัน : '.$time;		
+	    $text = 'เวลาในปัจจุบัน : '.$time_now;		
 	}
         if($texts == 'อกว'){
     	$file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
