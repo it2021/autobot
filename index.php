@@ -23,7 +23,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $text = 'ผมไม่เข้าใจความหมาย?';
 
-	if($time == '52'){
+	if($time == '54'){
 		$text = 'Alert Time'.$time;	
 	}
         if($texts == 'จดหมาย'){
@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             $text = 'วันนี้อากาศดีนะ';   
         }
 	if($texts == 'เวลา'){
-	    $text = 'เวลาในปัจจุบัน : '.$time_now;		
+	    $text = 'เวลาในปัจจุบัน : '.$time;		
 	}
         if($texts == 'อกว'){
     	$file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
