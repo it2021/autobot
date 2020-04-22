@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Bangkok'); 
 $API_URL = 'https://api.line.me/v2/bot/message';
 $ACCESS_TOKEN = 'yTdPdV7qXOJyl5duTlmuSGmSMy/MNqtzLmyewQXR4CbZW31lv3vKaVI+Labr7YbagSg11D5yGSxHSSp0ABVbVSEnfDYshKZ1Zw8ZWqsROchC24rZrizoMHLZx8cYvUYHudCZI74Dne4LoiIJzRNkwQdB04t89/1O/w1cDnyilFU='; 
 $channelSecret = '13cae15b2142e66b213a661e30004dbc';
@@ -7,7 +8,8 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
-$time_now = date('HH:i');
+$time_now = date('H:i');
+$time = date('i');
 
 
 if ( sizeof($request_array['events']) > 0 ) {
@@ -21,6 +23,9 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $text = 'ผมไม่เข้าใจความหมาย?';
 
+	if($time == '48'){
+		$text 'Alert Time'.$time.'';	
+	}
         if($texts == 'จดหมาย'){
         	$text = 'คุณต้องการดูจดหมายใช่ไหมครับ';
         }
