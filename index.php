@@ -43,7 +43,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             $text = 'วันนี้อากาศดีนะ';   
         }
 	if($texts == 'เวลา'){
-	    $text = 'เวลา ของ ปัจจุบัน : '.$time_now;		
+	    $text = 'เวลา ของ ปัจจุบัน : '.$time;		
 	}
         if($texts == 'อกว'){
     	$file = "https://www.tmd.go.th/xml/weather_report.php?StationNumber=48400";
