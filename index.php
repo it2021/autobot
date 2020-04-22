@@ -24,7 +24,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = 'ผมไม่เข้าใจความหมาย?';
 
 	if($time == '48'){
-		$text 'Alert Time'.$time.'';	
+		$text = 'Alert Time'.$time.'';	
 	}
         if($texts == 'จดหมาย'){
         	$text = 'คุณต้องการดูจดหมายใช่ไหมครับ';
